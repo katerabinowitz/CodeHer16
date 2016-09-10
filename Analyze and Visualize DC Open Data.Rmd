@@ -1,0 +1,139 @@
+---
+title: "Analyzing and Visualizing DC Open Data"
+output:
+  html_document:
+    css: css/styles.css
+---
+
+<center>![](images/homeBuild.png)</center>
+
+---
+
+#Today I hope everyone:
+* Learns about the open data landscape in DC. 
+* Gains familiarity with R
+* Builds a foundation of data analysis and visualization in R
+* Learns about DC through open data!
+
+###This presentation and the data we're using can be found here: 
+
+<br>
+
+---
+
+#Who Am I?
+![](images/DSC_0076.jpg)
+
+### Oh, hi, I'm Kate. 
+I like to analyze and visualize data about the District for my website, [DataLensDC](http://www.datalensdc.com/). My work's been featured on CityLab, GGWash, Washingtonian, and Washington City Paper, among others. I'm the Data Lead for [Code for DC](http://codefordc.org/), a civic hacking organization you should all join! 
+
+I'm also a co-organizer of this year's [Tech Lady Hackathon](http://techladyhackathon.org/), a one day *free* hackathon and learning workshop for women. 
+
+During the day, I'm an Economist for the U.S. government. 
+
+You can find me on [Twitter](https://twitter.com/DataLensDC) at @datalensdc or by e-mail at datalensdc@gmail.com.
+
+<br>
+
+---
+
+#DC's Open Data
+### There is a lot of data about DC publicly available through the federal or city government. 
+The most comprehensive sites are:
+
+* For federal-level data: [data.gov](https://www.data.gov/)
+
+* For city-level data: [opendata.dc.gov](http://opendata.dc.gov/)
+
+But these are by no means exhuastive!
+
+Open data is hidden throughout the web. I've created a DC-specific list of data [here](https://github.com/katerabinowitz/ManyHomesofDCData). Keep an eye out for a new open data website from Code for DC which aims to be an exhaustive repository. 
+
+### There is also a lot of data not publicly available. 
+If there is data you are interested and think the government has it, FOIA for it. This is not as daunting as it may seem. Here's [my FOIA guide.](https://github.com/katerabinowitz/FOIA-Requests). 
+
+### Here are some cool things made with open data:
+
+* All my [DataLensDC](http://www.datalensdc.com/) blog posts.
+* [Home Fire Risk Map](http://www.datakind.org/blog/american-red-cross-and-datakind-team-up-to-prevent-home-fire-deaths-and-injuries), created by [DataKindDC](http://www.meetup.com/DataKind-DC/)
+* [Per-Student Funding](http://dcpsbudget.ourdcschools.org/), created by [Code for DC](http://codefordc.org/)
+* [Tons](https://www.washingtonpost.com/graphics/local/metro-history-failures/) [and](http://www.washingtoncitypaper.com/news/article/20782284/charts-in-dc-elections-majority-doesnt-rule) [tons](http://mobilitylab.org/2016/09/09/waba-regional-bike-lane-map/) [of](http://www.urban.org/features/our-changing-city-collection) [news](https://districtmeasured.com/2016/08/23/d-c-s-cashiers-and-janitors-are-more-likely-to-live-in-the-city-than-other-workers-but-thats-changing/) [stories](https://wamu.org/news/16/07/13/permitting_problems_do_you_know_who_s_working_on_your_house_in_dc_it_s_not_clear) [and](http://time.com/4347614/washington-dc-metro-worst-stations/) [visualizations](http://open.dc.gov/econintel-cotw/).
+
+<br>
+
+---
+
+#Let's Get Programming!
+## But before that...
+There's a lot to learn with R and we couldn't possibly cover it all in two hours! But I do hope everyone leaves feeling comfortable and excited about programming in R. There a number of great free, online resources for continuing your R learning after today:
+
+* [Cookbook for R by Winston Chang](http://www.cookbook-r.com/) Guide to common tasks and problems in R
+* [Advanced R by Hadley Wickham](http://adv-r.had.co.nz/) Don't let the 'Advanced' scare you!
+* [R-Bloggers](https://www.r-bloggers.com/how-to-learn-r-2/) The most popular blog about R
+* [R Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) Cheatsheets for RStudio, data visualization, wrangling, and more!
+* [Swirl](http://swirlstats.com/) An interactive way to learn R, in R
+* [StackOverflow](http://stackoverflow.com/) All the questions and answers!
+
+<br>
+
+---
+
+#RStudio
+<center>![](images/RStudioEnv.png)</center>
+
+###R Studio is the primary working environment for R programming and it's split into four different panels. 
+* __The bottom left is the Console__. Code entered here immediately executes and can't be saved to file. Let's try a few simple match equations in the Console!
+* __The top left panel has tabs for R files and Data.__ Here you can create, edit, and view R files that hold your code. You can also view your data. 
+* __The top right panel has tabs for the Environment and History__. The environment tab is a list of the (mostly) data you have loaded for your session. The history tab shows your history of R coding. Whether or not it was saved to a file! History is also searchable. 
+* __The bottom right panel includes the Help and Plots tabs.__ Help holds descriptions and examples for R functions. Plots displays the graphics you've created. Other tabs show files and packages. 
+
+<br>
+
+---
+
+#Some of R's best features don't come pre-loaded. 
+R is open source. There is base functionality that comes standard with R, but many of the best features in R come through packages. Packages are created by users and contain data or functions to address a given task in R. To use a package it must first be installed on your computer. Then you need the load the package once per session. 
+
+###Today we're going to be using two packages:
+
+* __dplyr__ for manipulating data
+* __ggplot2__ for visualizing data
+
+###Let's get those packages!
+```{r eval=FALSE}
+install.packages(dplyr) #installs package to your computer
+require(dplyr) #loads package to session
+
+install.packages(ggplot2)
+require(ggplot2) 
+```
+
+<br>
+
+---
+
+#A few things to always keep in mind with R
+
+* R is always case-sensitive. Syntax is also not always consistent across packages.
+    + An embarrassing number of errors I receive is because of a typo. This is always a good first check.
+
+* Functions are always formatted as such:
+    + function (argument1, argument2)
+    + The function name always goes first and the arguments follow, separated by commas and enclosed in parentheses.
+    + We'll see lots of examples!
+
+* When your console returns '+' it means the function is still open. You probably forgot a close parentheses. 
+
+* ?function or help(function) are your best friends in RStudio.
+
+* Search engines and StackOverflow are your best friends outside of RStudio.
+
+* There can be many different approaches to solving a single problem. 
+
+* This is a learned skill and it's not always easy. 
+<br>
+
+---
+
+#Let's dive into the data!
+First we need to get the data into R. 
