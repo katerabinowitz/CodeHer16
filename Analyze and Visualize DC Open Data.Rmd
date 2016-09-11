@@ -15,9 +15,8 @@ output:
 * Builds a foundation of data analysis and visualization in R
 * Learns about DC through open data!
 
-###This presentation and the data we're using can be found here: 
-[http://bit.ly/2cBtK2S](http://bit.ly/2cBtK2S)
-
+###Follow along to the presentation here: http://rpubs.com/datalensdc/208449
+###Find the data we're using and the code to create this presentation here: http://bit.ly/2cBtK2S
 
 <br>
 
