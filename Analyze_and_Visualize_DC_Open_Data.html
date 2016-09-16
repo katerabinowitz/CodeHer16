@@ -132,11 +132,8 @@ $(document).ready(function () {
 <li>Builds a foundation of data analysis and visualization in R</li>
 <li>Learns about DC through open data!</li>
 </ul>
-<div id="follow-along-to-the-presentation-here-httprpubs.comdatalensdc208449" class="section level3">
-<h3>Follow along to the presentation here: <a href="http://rpubs.com/datalensdc/208449" class="uri">http://rpubs.com/datalensdc/208449</a></h3>
-</div>
-<div id="find-the-data-were-using-and-the-code-to-create-this-presentation-here-httpbit.ly2cbtk2s" class="section level3">
-<h3>Find the data we’re using and the code to create this presentation here: <a href="http://bit.ly/2cBtK2S" class="uri">http://bit.ly/2cBtK2S</a></h3>
+<div id="find-the-presentation-and-data-were-using-here-httpbit.ly2cbtk2s" class="section level3">
+<h3>Find the presentation and data we’re using here: <a href="http://bit.ly/2cBtK2S" class="uri">http://bit.ly/2cBtK2S</a></h3>
 <p><br></p>
 <hr />
 </div>
@@ -278,7 +275,7 @@ install.packages(ggplot2)</code></pre>
 <li>The new object you’re creating always goes first (dcPop).<br />
 </li>
 <li>&lt;- is the assignment operator. This means everything to the right of &lt;- is used to create the object (“assign value”) on the left.</li>
-<li>read.csv reads in a comma-separated value file to create a data.
+<li>read.csv reads in a comma-separated value file to create a data frame.
 <ul>
 <li>The <em>function</em> is read.csv and the <em>argument</em> is the location of the file you’re reading in.</li>
 <li>The file can come from a url or your computer, i.e. (“/Users/katerabinowitz/Documents/Talks/CodeHer16/data/dcPopulation.csv”)</li>
@@ -380,19 +377,20 @@ install.packages(ggplot2)</code></pre>
 ##  $ year      : int  1990 1990 1990 1990 1990 1990 1990 1990 2000 2000 ...</code></pre>
 <p>This is the structure of our ‘data frame’, or our table of data. Let’s take a moment to walk through it.</p>
 <ul>
-<li><p>There are 10 variables and 24 observations.</p></li>
-<li><p>Variables can come in with three different data types: character (for text data), factor (for categorical data), and numeric (for numerical data).</p></li>
-<li>Variables can come in with three different types:
-<ul>
-<li>character (for text variables)</li>
-<li>numeric (for numerical variables, which may be integer or numeric. What’s the difference?)</li>
-<li>factors (for categorical variables, which have a numeric value there refers to a category. for instance, 0 means no, 1 means yes.)</li>
-</ul></li>
+<li><p>There are 9 variables and 24 observations.</p></li>
 <li><p>Specific variables within a dataset can be referenced by putting a dollar sign between the data frame and variable names, like this: dataframe$variable.</p></li>
 </ul>
 <p>Let’s try:</p>
 <pre class="r"><code>dcPop$ward</code></pre>
 <pre><code>##  [1] 1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8</code></pre>
+<ul>
+<li>Variables can come in three different types:
+<ul>
+<li>character (for text variables)</li>
+<li>numeric (for numerical variables, which may be integer or numeric. What’s the difference?)</li>
+<li>factors (for categorical variables, which have a numeric value there refers to a category. for instance, 0 means no, 1 means yes.)</li>
+</ul></li>
+</ul>
 <p><br></p>
 <hr />
 </div>
@@ -537,8 +535,8 @@ totalPop</code></pre>
 <td align="left">Not x</td>
 </tr>
 <tr class="even">
-<td align="left">x</td>
-<td align="left">y</td>
+<td align="left">“x | y”</td>
+<td align="left">x OR y</td>
 </tr>
 <tr class="odd">
 <td align="left">x &amp; y</td>

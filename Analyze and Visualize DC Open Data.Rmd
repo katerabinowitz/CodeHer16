@@ -15,8 +15,7 @@ output:
 * Builds a foundation of data analysis and visualization in R
 * Learns about DC through open data!
 
-###Follow along to the presentation here: http://rpubs.com/datalensdc/208449
-###Find the data we're using and the code to create this presentation here: http://bit.ly/2cBtK2S
+###Find the presentation and data we're using here: http://bit.ly/2cBtK2S
 
 <br>
 
@@ -148,7 +147,7 @@ How'd that work?
 
 * The new object you're creating always goes first (dcPop).  
 * <- is the assignment operator. This means everything to the right of <- is used to create the object ("assign value") on the left. 
-* read.csv reads in a comma-separated value file to create a data.
+* read.csv reads in a comma-separated value file to create a data frame.
     + The *function* is read.csv and the *argument* is the location of the file you're reading in. 
     + The file can come from a url or your computer, i.e. ("/Users/katerabinowitz/Documents/Talks/CodeHer16/data/dcPopulation.csv")
     + for more details and arguments do: ?read.csv
@@ -188,14 +187,7 @@ str(dcPop)
 ```
 This is the structure of our 'data frame', or our table of data. Let's take a moment to walk through it. 
 
-* There are 10 variables and 24 observations. 
-
-* Variables can come in with three different data types: character (for text data), factor (for categorical data), and numeric (for numerical data). 
-
-* Variables can come in with three different types:
-    + character (for text variables) 
-    + numeric (for numerical variables, which may be integer or numeric. What's the difference?)
-    + factors (for categorical variables, which have a numeric value there refers to a category. for instance, 0 means no, 1 means yes.)
+* There are 9 variables and 24 observations. 
 
 * Specific variables within a dataset can be referenced by putting a dollar sign between the data frame and variable names, like this: dataframe$variable.
 
@@ -203,6 +195,11 @@ Let's try:
 ```{r}
 dcPop$ward
 ```
+
+* Variables can come in three different types:
+    + character (for text variables) 
+    + numeric (for numerical variables, which may be integer or numeric. What's the difference?)
+    + factors (for categorical variables, which have a numeric value there refers to a category. for instance, 0 means no, 1 means yes.)
 
 <br>
 
@@ -275,7 +272,7 @@ There are many different layers you can add on to change the styling and notatio
 <br>
 
 ---
-
+ 
 # Are there any differences in population changes by ward? 
 ###Let's say I only want to compare 1990 to 2010
 We'll need to filter the data.
@@ -293,7 +290,7 @@ Operator      | Defintion
 ==	| exactly equal to
 != | 	not equal to
 !x |	Not x
-x | y |	x OR y
+"x | y" |	x OR y
 x & y	|x AND y
 isTRUE(x)	| test if X is TRUE
 
